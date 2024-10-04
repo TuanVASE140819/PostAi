@@ -1,0 +1,45 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "My API",
+    "description": "My API with Swagger"
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "schemes": ["http"],
+  "paths": {
+    "/items": {
+      "get": {
+        "summary": "Get all items",
+        "responses": {
+          "200": {
+            "description": "Success"
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a new item",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      }
+    }
+  }
+}
