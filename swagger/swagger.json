@@ -40,6 +40,63 @@
           }
         }
       }
+    },
+    "/ads": {
+      "post": {
+        "tags": ["ads"],
+        "summary": "Add a new ad",
+        "parameters": [
+          {
+            "name": "title",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "imageUrl",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "link",
+            "in": "formData",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "startDate",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          },
+          {
+            "name": "endDate",
+            "in": "formData",
+            "required": true,
+            "type": "string",
+            "format": "date"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
     }
   }
 }

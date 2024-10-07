@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const PostSchema = new mongoose.Schema(
+const KnowledgeSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -14,12 +14,13 @@ const PostSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    category: {
-      type: String,
-      required: true,
-    },
     tags: {
       type: [String],
+      required: true,
+    },
+    category: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "CategoryKnowledge",
       required: true,
     },
     status: {
@@ -27,16 +28,8 @@ const PostSchema = new mongoose.Schema(
       required: true,
       enum: ["draft", "published", "archived"],
     },
-    image: {
-      type: String,
-      required: true,
-    },
-    scheduledDate: {
-      type: Date,
-      required: false,
-    },
   },
   { timestamps: true }
-); // Add timestamps here
+);
 
-module.exports = mongoose.model("Post", PostSchema);
+module.exports = mongoose.model("Knowledge", KnowledgeSchema);

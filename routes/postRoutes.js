@@ -47,6 +47,28 @@ router.get("/posts", async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * /posts/latest:
+ *   get:
+ *     tags:
+ *       - posts
+ *     description: Get the latest 3 posts
+ *     responses:
+ *       200:
+ *         description: Success
+ *       500:
+ *         description: Internal server error
+ */
+router.get("/posts/latest", async (req, res) => {
+  try {
+    const posts = await Post.find().sort({ createdAt: -1 }).limit(3);
+    res.json(posts);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+});
+
 // GET posts by status
 /**
  * @swagger
